@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+<h1 class='title'></h1>
+<section class='scanned'></section>
+<code class='user-agent'></code>
+
+<script>
+  $(document).ready(function () {
+    $(".title").text("waiting to be scanned...");
+
+    $(".user-agent").text(navigator.userAgent.toLowerCase());
+
+    if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+      location.href =
+        "https://play.google.com/store/apps/details?id=com.sgproof.shop&hl=en_US";
+      $(".scanned").text("android");
+    }
+    if (navigator.userAgent.toLowerCase().indexOf("ios") > -1) {
+      $(".scanned").text("ios");
+    }
+
+    else {
+      $(".scanned").text("not a phone");
+    }
+  });
+</script>
+
+
+</body>
+</html>
