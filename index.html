@@ -1,38 +1,89 @@
 <!doctype html>
 <html lang='en'>
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport'
-        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
-  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-  <title>Document</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 <h1 class='title'></h1>
 <section class='scanned'></section>
 <code class='user-agent'></code>
 
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $(".title").text("waiting to be scanned...");-->
+
+<!--        const userAgent = navigator.userAgent.toLowerCase();-->
+<!--        $(".user-agent").text(userAgent);-->
+
+<!--        if (-->
+<!--            userAgent.includes("android") ||-->
+<!--            userAgent.includes("asus") ||-->
+<!--            userAgent.includes("htc") ||-->
+<!--            userAgent.includes("huawei") ||-->
+<!--            userAgent.includes("lenovo") ||-->
+<!--            userAgent.includes("lg") ||-->
+<!--            userAgent.includes("motorola") ||-->
+<!--            userAgent.includes("nokia") ||-->
+<!--            userAgent.includes("oneplus") ||-->
+<!--            userAgent.includes("oppo") ||-->
+<!--            userAgent.includes("samsung") ||-->
+<!--            userAgent.includes("sony") ||-->
+<!--            userAgent.includes("xiaomi")-->
+<!--        ) {-->
+<!--            location.href = "https://play.google.com/store/apps/details?id=com.sgproof.shop&hl=en_US";-->
+<!--            $(".scanned").text("android");-->
+<!--        }-->
+
+<!--        if (-->
+<!--            userAgent.includes("ios") ||-->
+<!--            userAgent.includes("iphone") ||-->
+<!--            userAgent.includes("ipad")-->
+<!--        ) {-->
+<!--            location.href = "https://apps.apple.com/us/app/sg-proof/id6443609412"-->
+<!--            $(".scanned").text("ios");-->
+<!--        } else {-->
+<!--            $(".scanned").text("not a phone");-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+
 <script>
-  $(document).ready(function () {
-    $(".title").text("waiting to be scanned...");
+    $(document).ready(function () {
+        $(".title").text("waiting to be scanned...");
 
-    $(".user-agent").text(navigator.userAgent.toLowerCase());
+        // Get the user agent string
+        const userAgent = navigator.userAgent.toLowerCase();
+        $(".user-agent").text(userAgent);
 
-    if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
-      location.href =
-        "https://play.google.com/store/apps/details?id=com.sgproof.shop&hl=en_US";
-      $(".scanned").text("android");
-    }
-    if (navigator.userAgent.toLowerCase().indexOf("ios") > -1) {
-      location.href = "https://apps.apple.com/us/app/sg-proof/id6443609412"
-      $(".scanned").text("ios");
-    }
 
-    else {
-      $(".scanned").text("not a phone");
-    }
-  });
+        // Detect if the user is on iOS (iPhone, iPad, iPod) or Android
+        const isiOS = /ios|iphone|ipad|ipod/.test(userAgent);
+        const isAndroid = /android/.test(userAgent);
+
+        // Function to redirect to the App Store
+        function redirectToAppStore() {
+            // Redirect to the iOS App Store if the user is on iOS
+            if (isiOS) {
+                location.href = "https://apps.apple.com/us/app/sg-proof/id6443609412";
+                $(".scanned").text("ios");
+            }
+
+            // Redirect to the Google Play Store if the user is on Android
+            if (isAndroid) {
+                location.href = "https://play.google.com/store/apps/details?id=com.sgproof.shop&hl=en_US"
+                $(".scanned").text("android");
+
+            } else {
+                $(".scanned").text("not a phone");
+            }
+        }
+    });
 </script>
 
 
