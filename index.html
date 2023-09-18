@@ -61,28 +61,25 @@
         const userAgent = navigator.userAgent.toLowerCase();
         $(".user-agent").text(userAgent);
 
-
         // Detect if the user is on iOS (iPhone, iPad, iPod) or Android
         const isiOS = /ios|iphone|ipad|ipod/.test(userAgent);
         const isAndroid = /android/.test(userAgent);
 
-        // Function to redirect to the App Store
-        function redirectToAppStore() {
-            // Redirect to the iOS App Store if the user is on iOS
-            if (isiOS) {
-                location.href = "https://apps.apple.com/us/app/sg-proof/id6443609412";
-                $(".scanned").text("ios");
-            }
-
-            // Redirect to the Google Play Store if the user is on Android
-            if (isAndroid) {
-                location.href = "https://play.google.com/store/apps/details?id=com.sgproof.shop&hl=en_US"
-                $(".scanned").text("android");
-
-            } else {
-                $(".scanned").text("not a phone");
-            }
+        // Redirect to the iOS App Store if the user is on iOS
+        if (isiOS) {
+            location.href = "https://apps.apple.com/us/app/sg-proof/id6443609412";
+            $(".scanned").text("ios");
         }
+
+        // Redirect to the Google Play Store if the user is on Android
+        if (isAndroid) {
+            location.href = "https://play.google.com/store/apps/details?id=com.sgproof.shop&hl=en_US"
+            $(".scanned").text("android");
+
+        } else {
+            $(".scanned").text("not a phone");
+        }
+
     });
 </script>
 
